@@ -1,0 +1,14 @@
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.deps.json
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.runtimeconfig.json
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.runtimeconfig.dev.json
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.dll
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.pdb
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.csprojAssemblyReference.cache
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.csproj.CoreCompileInputs.cache
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.RazorAssemblyInfo.cache
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.RazorAssemblyInfo.cs
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.AssemblyInfoInputs.cache
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.AssemblyInfo.cs
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.RazorTargetAssemblyInfo.cache
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.dll
+E:\pro-exam-builder\Pro.Exam.Builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.pdb
