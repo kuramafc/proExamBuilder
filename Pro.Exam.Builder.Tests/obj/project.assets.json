@@ -5755,11 +5755,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Tests\\Pro.Exam.Builder.Tests.csproj",
+      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder.Tests\\Pro.Exam.Builder.Tests.csproj",
       "projectName": "Pro.Exam.Builder.Tests",
-      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Tests\\Pro.Exam.Builder.Tests.csproj",
+      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Tests\\Pro.Exam.Builder.Tests.csproj",
       "packagesPath": "C:\\Users\\Thanatos\\.nuget\\packages\\",
-      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Tests\\obj\\",
+      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

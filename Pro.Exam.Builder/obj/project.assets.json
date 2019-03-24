@@ -4495,6 +4495,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "Pro.Exam.Builder.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Pro.Exam.Builder.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pro.Exam.Builder.Domain.dll": {}
+        }
       }
     }
   },
@@ -12179,12 +12189,18 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "Pro.Exam.Builder.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj",
+      "msbuildProject": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
+      "Pro.Exam.Builder.Domain >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
@@ -12195,11 +12211,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder\\Pro.Exam.Builder.csproj",
+      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.csproj",
       "projectName": "Pro.Exam.Builder",
-      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder\\Pro.Exam.Builder.csproj",
+      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.csproj",
       "packagesPath": "C:\\Users\\Thanatos\\.nuget\\packages\\",
-      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder\\obj\\",
+      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12217,7 +12233,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj": {
+              "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

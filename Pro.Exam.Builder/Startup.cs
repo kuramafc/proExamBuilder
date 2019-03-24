@@ -55,7 +55,6 @@ namespace Pro.Exam.Builder
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pro Exam Builder");
-                c.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();

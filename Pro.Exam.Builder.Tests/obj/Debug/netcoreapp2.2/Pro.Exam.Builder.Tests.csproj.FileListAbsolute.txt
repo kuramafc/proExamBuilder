@@ -1,0 +1,14 @@
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\nunit.engine.netstandard.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.deps.json
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.runtimeconfig.json
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.runtimeconfig.dev.json
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.pdb
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.csprojAssemblyReference.cache
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.csproj.CoreCompileInputs.cache
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.AssemblyInfoInputs.cache
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.AssemblyInfo.cs
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Tests\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Tests.pdb

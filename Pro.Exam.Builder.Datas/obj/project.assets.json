@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj",
+      "projectUniqueName": "E:\\pro-exam-builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj",
       "projectName": "Pro.Exam.Builder.Datas",
-      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj",
+      "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj",
       "packagesPath": "C:\\Users\\Thanatos\\.nuget\\packages\\",
-      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.Datas\\obj\\",
+      "outputPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Datas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
