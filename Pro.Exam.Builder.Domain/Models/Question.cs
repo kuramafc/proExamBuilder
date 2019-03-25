@@ -21,9 +21,10 @@ namespace Pro.Exam.Builder.Domain.Models
         public string Image { get; set; }
         [DefaultValue("Anonymous")]
         public string Author { get; set; }
+        [DefaultValue(true)]
+        public bool HasOption { get; set; }
         public int Semester { get; set; }
         public string Matter { get; set; }
         public string Subject { get; set; }
-
     }
 }
