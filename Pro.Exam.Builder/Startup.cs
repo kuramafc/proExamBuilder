@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Pro.Exam.Builder.Ioc;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Pro.Exam.Builder
@@ -32,6 +33,7 @@ namespace Pro.Exam.Builder
             {
                 c.SwaggerDoc("v1", new Info { Title = "Pro Exam Builder", Version = "v1" });
             });
+            services.AddInfrastructure();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

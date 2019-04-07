@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Interfaces.Services;
 
 namespace Pro.Exam.Builder.Controllers
 {
@@ -12,11 +13,18 @@ namespace Pro.Exam.Builder.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly IUsersService _usersService;
+
+        public UsersController(IUsersService usersService)
+        {
+            _usersService = usersService;
+        }
+
         // GET api/v1/Users
         /// <summary>
         /// Test the Api.
         /// </summary>
-        [HttpGet]
+        [HttpGet("Test")]
         [ProducesResponseType(200)]
         public ActionResult<string> Test()
         {

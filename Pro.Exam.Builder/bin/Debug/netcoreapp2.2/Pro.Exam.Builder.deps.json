@@ -27,6 +27,7 @@
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Pro.Exam.Builder.Domain": "1.0.0",
+          "Pro.Exam.Builder.Ioc": "1.0.0",
           "Swashbuckle.AspNetCore": "4.0.1"
         },
         "runtime": {
@@ -272,12 +273,35 @@
           "lib/netstandard2.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         }
       },
+      "Pro.Exam.Builder.Datas/1.0.0": {
+        "dependencies": {
+          "Pro.Exam.Builder.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Pro.Exam.Builder.Datas.dll": {}
+        },
+        "compile": {
+          "Pro.Exam.Builder.Datas.dll": {}
+        }
+      },
       "Pro.Exam.Builder.Domain/1.0.0": {
         "runtime": {
           "Pro.Exam.Builder.Domain.dll": {}
         },
         "compile": {
           "Pro.Exam.Builder.Domain.dll": {}
+        }
+      },
+      "Pro.Exam.Builder.Ioc/1.0.0": {
+        "dependencies": {
+          "Pro.Exam.Builder.Datas": "1.0.0",
+          "Pro.Exam.Builder.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Pro.Exam.Builder.Ioc.dll": {}
+        },
+        "compile": {
+          "Pro.Exam.Builder.Ioc.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3378,7 +3402,17 @@
       "path": "swashbuckle.aspnetcore.swaggerui/4.0.1",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.4.0.1.nupkg.sha512"
     },
+    "Pro.Exam.Builder.Datas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Pro.Exam.Builder.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Pro.Exam.Builder.Ioc/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

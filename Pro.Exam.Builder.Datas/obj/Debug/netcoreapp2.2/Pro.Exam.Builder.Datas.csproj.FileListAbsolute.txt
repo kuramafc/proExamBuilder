@@ -7,3 +7,6 @@ E:\pro-exam-builder\Pro.Exam.Builder.Datas\obj\Debug\netcoreapp2.2\Pro.Exam.Buil
 E:\pro-exam-builder\Pro.Exam.Builder.Datas\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.AssemblyInfo.cs
 E:\pro-exam-builder\Pro.Exam.Builder.Datas\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.dll
 E:\pro-exam-builder\Pro.Exam.Builder.Datas\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.pdb
+E:\pro-exam-builder\Pro.Exam.Builder.Datas\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Datas\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.pdb
+E:\pro-exam-builder\Pro.Exam.Builder.Datas\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.csproj.CopyComplete

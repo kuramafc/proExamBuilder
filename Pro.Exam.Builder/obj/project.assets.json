@@ -4496,6 +4496,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "Pro.Exam.Builder.Datas/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Pro.Exam.Builder.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Pro.Exam.Builder.Datas.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pro.Exam.Builder.Datas.dll": {}
+        }
+      },
       "Pro.Exam.Builder.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -4504,6 +4517,20 @@
         },
         "runtime": {
           "bin/placeholder/Pro.Exam.Builder.Domain.dll": {}
+        }
+      },
+      "Pro.Exam.Builder.Ioc/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Pro.Exam.Builder.Datas": "1.0.0",
+          "Pro.Exam.Builder.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Pro.Exam.Builder.Ioc.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pro.Exam.Builder.Ioc.dll": {}
         }
       }
     }
@@ -12190,10 +12217,20 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "Pro.Exam.Builder.Datas/1.0.0": {
+      "type": "project",
+      "path": "../Pro.Exam.Builder.Datas/Pro.Exam.Builder.Datas.csproj",
+      "msbuildProject": "../Pro.Exam.Builder.Datas/Pro.Exam.Builder.Datas.csproj"
+    },
     "Pro.Exam.Builder.Domain/1.0.0": {
       "type": "project",
       "path": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj",
       "msbuildProject": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj"
+    },
+    "Pro.Exam.Builder.Ioc/1.0.0": {
+      "type": "project",
+      "path": "../Pro.Exam.Builder.Ioc/Pro.Exam.Builder.Ioc.csproj",
+      "msbuildProject": "../Pro.Exam.Builder.Ioc/Pro.Exam.Builder.Ioc.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12201,6 +12238,7 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
       "Pro.Exam.Builder.Domain >= 1.0.0",
+      "Pro.Exam.Builder.Ioc >= 1.0.0",
       "Swashbuckle.AspNetCore >= 4.0.1"
     ]
   },
@@ -12236,6 +12274,9 @@
           "projectReferences": {
             "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj": {
               "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj"
+            },
+            "E:\\pro-exam-builder\\Pro.Exam.Builder.Ioc\\Pro.Exam.Builder.Ioc.csproj": {
+              "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Ioc\\Pro.Exam.Builder.Ioc.csproj"
             }
           }
         }

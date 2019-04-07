@@ -207,6 +207,29 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Pro.Exam.Builder.Datas/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Pro.Exam.Builder.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Pro.Exam.Builder.Datas.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pro.Exam.Builder.Datas.dll": {}
+        }
+      },
+      "Pro.Exam.Builder.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/Pro.Exam.Builder.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Pro.Exam.Builder.Domain.dll": {}
+        }
       }
     }
   },
@@ -678,11 +701,23 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Pro.Exam.Builder.Datas/1.0.0": {
+      "type": "project",
+      "path": "../Pro.Exam.Builder.Datas/Pro.Exam.Builder.Datas.csproj",
+      "msbuildProject": "../Pro.Exam.Builder.Datas/Pro.Exam.Builder.Datas.csproj"
+    },
+    "Pro.Exam.Builder.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj",
+      "msbuildProject": "../Pro.Exam.Builder.Domain/Pro.Exam.Builder.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "Pro.Exam.Builder.Datas >= 1.0.0",
+      "Pro.Exam.Builder.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -714,7 +749,14 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\pro-exam-builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj": {
+              "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Datas\\Pro.Exam.Builder.Datas.csproj"
+            },
+            "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj": {
+              "projectPath": "E:\\pro-exam-builder\\Pro.Exam.Builder.Domain\\Pro.Exam.Builder.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

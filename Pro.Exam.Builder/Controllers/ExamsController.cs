@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,12 @@ namespace Pro.Exam.Builder.Controllers
     [Route("api/v1/[controller]")]
     public class ExamsController : ControllerBase
     {
+        private readonly IExamsService _examsService;
+
+        public ExamsController(IExamsService examsService)
+        {
+            _examsService = examsService;
+        }
 
         // POST api/v1/Exams/Questions
         /// <summary>

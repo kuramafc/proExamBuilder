@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pro.Exam.Builder.Domain\Pro.Exam.Builder.Domain.csproj" />
+    <ProjectReference Include="..\Pro.Exam.Builder.Ioc\Pro.Exam.Builder.Ioc.csproj" />
   </ItemGroup>
 
 </Project>
