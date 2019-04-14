@@ -20,6 +20,11 @@ namespace Pro.Exam.Builder.Domain.Services
             return _combosRepository.GetMatters();
         }
 
+        public Task PostSubject(string subject)
+        {
+            return _combosRepository.PostSubject(subject);
+        }
+
         public Task<IEnumerable<string>> GetSubjects()
         {
             return _combosRepository.GetSubjects();

@@ -3,6 +3,10 @@ E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builde
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.pdb
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.dll
+E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.pdb
+E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.pdb
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.csprojAssemblyReference.cache
@@ -12,7 +16,3 @@ E:\pro-exam-builder\Pro.Exam.Builder.Ioc\obj\Debug\netcoreapp2.2\Pro.Exam.Builde
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.csproj.CopyComplete
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.dll
 E:\pro-exam-builder\Pro.Exam.Builder.Ioc\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.pdb
-E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.dll
-E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.dll
-E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.pdb
-E:\pro-exam-builder\Pro.Exam.Builder.Ioc\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.pdb

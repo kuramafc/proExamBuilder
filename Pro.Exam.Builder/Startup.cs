@@ -33,7 +33,8 @@ namespace Pro.Exam.Builder
             {
                 c.SwaggerDoc("v1", new Info { Title = "Pro Exam Builder", Version = "v1" });
             });
-            services.AddInfrastructure();
+
+            services.AddInfrastructure(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

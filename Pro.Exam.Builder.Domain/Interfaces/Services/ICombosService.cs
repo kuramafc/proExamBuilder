@@ -8,6 +8,7 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     public interface ICombosService
     {
         Task<IEnumerable<string>> GetSubjects();
+        Task PostSubject(string subject);
         Task<IEnumerable<string>> GetMatters();
     }
 }

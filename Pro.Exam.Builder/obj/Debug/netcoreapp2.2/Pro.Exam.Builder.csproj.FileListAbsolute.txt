@@ -17,10 +17,12 @@ E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.ru
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.runtimeconfig.dev.json
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.dll
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.pdb
+E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.dll
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.dll
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.dll
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Domain.pdb
 E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Ioc.pdb
+E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.pdb
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.csprojAssemblyReference.cache
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.csproj.CoreCompileInputs.cache
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.RazorAssemblyInfo.cache
@@ -31,5 +33,3 @@ E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.Ra
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.csproj.CopyComplete
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.dll
 E:\pro-exam-builder\Pro.Exam.Builder\obj\Debug\netcoreapp2.2\Pro.Exam.Builder.pdb
-E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.dll
-E:\pro-exam-builder\Pro.Exam.Builder\bin\Debug\netcoreapp2.2\Pro.Exam.Builder.Datas.pdb

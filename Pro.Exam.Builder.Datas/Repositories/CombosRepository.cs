@@ -1,6 +1,8 @@
-﻿using Pro.Exam.Builder.Domain.Interfaces.Services;
+﻿using Pro.Exam.Builder.Domain.Interfaces;
+using Pro.Exam.Builder.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,14 +10,30 @@ namespace Pro.Exam.Builder.Datas.Repositories
 {
     public class CombosRepository : ICombosRepository
     {
-        public Task<IEnumerable<string>> GetMatters()
+        public IConnection _connection;
+
+        public CombosRepository(IConnection connection)
         {
-            throw new NotImplementedException();
+            _connection = connection;
         }
 
-        public Task<IEnumerable<string>> GetSubjects()
+        public async Task<IEnumerable<string>> GetMatters()
         {
-            throw new NotImplementedException();
+            var result = await _connection.Execute<string>("Select Matter from Matters");
+
+            return result;
+        }
+
+        public async Task PostSubject(string subject)
+        {
+            await _connection.Execute<string>(@"insert into Subjects (Subject) values (@subject)", new { subject });
+        }
+
+        public async Task<IEnumerable<string>> GetSubjects()
+        {
+            var result = await _connection.Execute<string>("Select Subject from Subjects");
+
+            return result;
         }
     }
 }
