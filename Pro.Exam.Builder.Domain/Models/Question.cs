@@ -9,6 +9,7 @@ namespace Pro.Exam.Builder.Domain.Models
 {
     public class Question
     {
+        public int Id { get; set; }
         [Required]
         public Difficult Difficult { get; set; }
         [Required]

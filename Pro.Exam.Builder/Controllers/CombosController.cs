@@ -49,18 +49,59 @@ namespace Pro.Exam.Builder.Controllers
             _combosService.PostSubject(subject).GetAwaiter().GetResult();
 
             return Created("api/v1/Combo/Subjects", subject);
+        }
+
+        // DELETE api/v1/Combo/Subjects
+        /// <summary>
+        /// Delete a 'Disciplica'.
+        /// </summary>
+        [HttpDelete("Subjects")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public void DeleteSubjects(string subjects)
+        {
 
         }
 
-        // GET api/v1/Combo/Matter
+        // GET api/v1/Combo/Matters
         /// <summary>
         /// Returns a list of 'Matérias'.
         /// </summary>
-        [HttpGet("Matter")]
+        [HttpGet("Matters")]
         [ProducesResponseType(200)]
         public ActionResult<IEnumerable<string>> GetMatters()
         {
             return _combosService.GetMatters().GetAwaiter().GetResult().ToArray();
+        }
+
+        // POST api/v1/Combo/Matters
+        /// <summary>
+        /// Create a 'Matérias'.
+        /// </summary>
+        [HttpPost("Matters")]
+        [ProducesResponseType(200)]
+        public object PostMatters(string matter)
+        {
+            if (matter == null)
+            {
+                return BadRequest();
+            }
+
+            return Created("api/v1/Combo/matters", matter);
+        }
+
+        // DELETE api/v1/Combo/Matters
+        /// <summary>
+        /// Delete a 'Matéria'.
+        /// </summary>
+        [HttpDelete("Matters")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public void DeleteMatters(string matter)
+        {
+            
         }
     }
 }

@@ -2,13 +2,5 @@
   "ProjectFilePath": "e:\\pro-exam-builder\\Pro.Exam.Builder\\Pro.Exam.Builder.csproj",
   "TargetFramework": "netcoreapp2.2",
   "TagHelpers": [],
-  "Configuration": {
-    "ConfigurationName": "MVC-2.1",
-    "LanguageVersion": "2.1",
-    "Extensions": [
-      {
-        "ExtensionName": "MVC-2.1"
-      }
-    ]
-  }
+  "Configuration": null
 }
