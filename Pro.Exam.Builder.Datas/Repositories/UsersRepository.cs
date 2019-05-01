@@ -1,22 +1,31 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Interfaces;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Datas.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
-        public Task Login(UserDto user)
+        public IConnection _connection;
+
+        public UsersRepository(IConnection connection)
         {
-            throw new NotImplementedException();
+            _connection = connection;
+        }
+        public async Task<bool> Login(UserDto user)
+        {
+            var result = await _connection.GetFirstOrDefault<UserDto>("SELECT * FROM users WHERE Email = @Email AND Password =  @Password AND Type = @Type", user);
+
+            return result != null;
         }
 
-        public Task Register(UserDto user)
+        public async Task<bool> Register(UserDto user)
         {
-            throw new NotImplementedException();
+           var result = await _connection.Execute<UserDto>("INSERT INTO Users (UserName, Password, Email, Type) values (@UserName, @Password, @Email, @Type)", user);
+
+            return result != null;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
 {
     public interface IUsersRepository
     {
-        Task Register(UserDto user);
-        Task Login(UserDto user);
+        Task<bool> Register(UserDto user);
+        Task<bool> Login(UserDto user);
     }
 }

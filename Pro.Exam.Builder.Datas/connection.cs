@@ -36,5 +36,24 @@ namespace Pro.Exam.Builder.Datas
                 }
             }
         }
+
+        public async Task<T> GetFirstOrDefault<T>(string query, object param = null)
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                try
+                {
+                    var result = await connection.QueryFirstOrDefaultAsync<T>(query, param);
+
+                    connection.Close();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    var exception = ex;
+                    return default(T);
+                }
+            }
+        }
     }
 }

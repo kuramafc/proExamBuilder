@@ -8,5 +8,6 @@ namespace Pro.Exam.Builder.Domain.Interfaces
     public interface IConnection
     {
         Task<IEnumerable<T>> Execute<T>(string query, object param = null);
+        Task<T> GetFirstOrDefault<T>(string query, object param = null);
     }
 }

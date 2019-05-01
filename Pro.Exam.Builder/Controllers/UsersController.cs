@@ -41,8 +41,16 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Register")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void Register([FromBody] UserDto user)
+        public async Task<StatusCodeResult> Register([FromBody] UserDto user)
         {
+            var result = await _usersService.Register(user);
+
+            if (result)
+            {
+                return StatusCode(201);
+            }
+
+            return StatusCode(400);
         }
 
         // POST api/v1/Users/Login
@@ -56,8 +64,16 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public void Login([FromBody] UserDto user)
+        public async Task<StatusCodeResult> Login([FromBody] UserDto user)
         {
+            var result = await _usersService.Login(user);
+
+            if (result)
+            {
+                return StatusCode(201);
+            }
+
+            return StatusCode(401);
         }
     }
 }

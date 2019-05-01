@@ -16,12 +16,12 @@ namespace Pro.Exam.Builder.Domain.Services
             _usersRepository = usersRepository;
         }
 
-        public Task Login(UserDto user)
+        public Task<bool> Login(UserDto user)
         {
             return _usersRepository.Login(user);
         }
 
-        public Task Register(UserDto user)
+        public Task<bool> Register(UserDto user)
         {
             return _usersRepository.Register(user);
         }

@@ -10,7 +10,7 @@ namespace Pro.Exam.Builder.Domain.Dtos
     {
         [Required]
         [MaxLengthAttribute(45)]
-        public string User { get; set; }
+        public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
         [Required]

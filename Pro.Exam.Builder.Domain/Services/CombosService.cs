@@ -1,7 +1,6 @@
-﻿using Pro.Exam.Builder.Domain.Interfaces.Services;
-using System;
+﻿using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Interfaces.Services;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Domain.Services
@@ -15,19 +14,34 @@ namespace Pro.Exam.Builder.Domain.Services
             _combosRepository = combosRepository;
         }
 
-        public Task<IEnumerable<string>> GetMatters()
+        public Task<IEnumerable<MatterDto>> GetMatters()
         {
             return _combosRepository.GetMatters();
         }
 
-        public Task PostSubject(string subject)
+        public Task<bool> PostMatter(string matter)
         {
-            return _combosRepository.PostSubject(subject);
+            return _combosRepository.PostMatter(matter);
         }
 
-        public Task<IEnumerable<string>> GetSubjects()
+        public Task<bool> DeleteMatter(int matterId)
         {
-            return _combosRepository.GetSubjects();
+            return _combosRepository.DeleteMatters(matterId);
+        }
+
+        public Task<bool> PostSubject(string subject, int matterId)
+        {
+            return _combosRepository.PostSubject(subject, matterId);
+        }
+
+        public Task<IEnumerable<SubjectDto>> GetSubjects(int matterId)
+        {
+            return _combosRepository.GetSubjects(matterId);
+        }
+
+        public Task<bool> DeleteSubject(int subjectId, int matterId)
+        {
+            return _combosRepository.DeleteSubject(subjectId, matterId);
         }
     }
 }

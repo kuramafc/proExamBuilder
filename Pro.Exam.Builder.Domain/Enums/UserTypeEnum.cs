@@ -6,7 +6,7 @@ namespace Pro.Exam.Builder.Domain.Enums
 {
     public enum UserTypeEnum
     {
-        teacher = 0,
-        director = 1
+        teacher = 1,
+        director = 2
     }
 }

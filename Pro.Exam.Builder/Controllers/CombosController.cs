@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Controllers
@@ -24,9 +23,11 @@ namespace Pro.Exam.Builder.Controllers
         /// </summary>
         [HttpGet("Subjects")]
         [ProducesResponseType(200)]
-        public ActionResult<IEnumerable<string>> GetSubjects()
+        public async Task<ActionResult<IEnumerable<SubjectDto>>> GetSubjects(int matterId)
         {
-            return _combosService.GetSubjects().GetAwaiter().GetResult().ToArray();
+            var result = await _combosService.GetSubjects(matterId);
+
+            return Ok(result);
         }
 
         // POST api/v1/Combo/Subjects
@@ -39,16 +40,22 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Subjects")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public object PostSubjects(string subject)
+        [ProducesResponseType(500)]
+        public async Task<StatusCodeResult> PostSubjects(string subject, int matterId)
         {
             if (subject == null)
             {
                 return BadRequest();
             }
 
-            _combosService.PostSubject(subject).GetAwaiter().GetResult();
+            var result = await _combosService.PostSubject(subject, matterId);
 
-            return Created("api/v1/Combo/Subjects", subject);
+            if (result)
+            {
+                return StatusCode(201);
+            }
+
+            return StatusCode(500);
         }
 
         // DELETE api/v1/Combo/Subjects
@@ -59,9 +66,21 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public void DeleteSubjects(string subjects)
+        [ProducesResponseType(500)]
+        public async Task<ActionResult> DeleteSubjects(int subjectId, int matterId)
         {
+            if (matterId == 0 || subjectId == 0)
+            {
+                return BadRequest();
+            }
 
+            var result = await _combosService.DeleteSubject(subjectId, matterId);
+
+            if (result)
+            {
+                return Ok(subjectId + " Was deleted");
+            }
+            return StatusCode(500);
         }
 
         // GET api/v1/Combo/Matters
@@ -70,9 +89,11 @@ namespace Pro.Exam.Builder.Controllers
         /// </summary>
         [HttpGet("Matters")]
         [ProducesResponseType(200)]
-        public ActionResult<IEnumerable<string>> GetMatters()
+        public async Task<ActionResult<IEnumerable<MatterDto>>> GetMatters()
         {
-            return _combosService.GetMatters().GetAwaiter().GetResult().ToArray();
+            var result = await _combosService.GetMatters();
+
+            return Ok(result);
         }
 
         // POST api/v1/Combo/Matters
@@ -80,15 +101,23 @@ namespace Pro.Exam.Builder.Controllers
         /// Create a 'Matérias'.
         /// </summary>
         [HttpPost("Matters")]
-        [ProducesResponseType(200)]
-        public object PostMatters(string matter)
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        public async Task<StatusCodeResult> PostMatters(string matter)
         {
             if (matter == null)
             {
                 return BadRequest();
             }
 
-            return Created("api/v1/Combo/matters", matter);
+            var result = await _combosService.PostMatter(matter);
+
+            if (result)
+            {
+                return StatusCode(201);
+            }
+
+            return StatusCode(500);
         }
 
         // DELETE api/v1/Combo/Matters
@@ -99,9 +128,21 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public void DeleteMatters(string matter)
+        [ProducesResponseType(500)]
+        public async Task<ActionResult> DeleteMatters(int matterId)
         {
-            
+            if (matterId == 0)
+            {
+                return BadRequest();
+            }
+
+            var result = await _combosService.DeleteMatter(matterId);
+
+            if (result)
+            {
+                return Ok(matterId + " Was deleted");
+            }
+            return StatusCode(500);
         }
     }
 }
