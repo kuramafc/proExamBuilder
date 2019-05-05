@@ -1,9 +1,7 @@
 ﻿using Pro.Exam.Builder.Domain.Enums;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Pro.Exam.Builder.Domain.Models
 {
@@ -24,8 +22,8 @@ namespace Pro.Exam.Builder.Domain.Models
         public string Author { get; set; }
         [DefaultValue(true)]
         public bool HasOption { get; set; }
-        public int Semester { get; set; }
-        public string Matter { get; set; }
-        public string Subject { get; set; }
+        public long Code { get; set; }
+        public int MatterId { get; set; }
+        public int SubjectId { get; set; }
     }
 }

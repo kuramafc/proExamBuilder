@@ -23,9 +23,9 @@ namespace Pro.Exam.Builder.Controllers
         /// </summary>
         [HttpGet("Subjects")]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<IEnumerable<SubjectDto>>> GetSubjects(int matterId)
+        public async Task<ActionResult<IEnumerable<SubjectDto>>> GetSubjects()
         {
-            var result = await _combosService.GetSubjects(matterId);
+            var result = await _combosService.GetSubjects();
 
             return Ok(result);
         }
@@ -41,14 +41,14 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(500)]
-        public async Task<StatusCodeResult> PostSubjects(string subject, int matterId)
+       public async Task<StatusCodeResult> PostSubjects(string subject)
         {
             if (subject == null)
             {
                 return BadRequest();
             }
 
-            var result = await _combosService.PostSubject(subject, matterId);
+            var result = await _combosService.PostSubject(subject);
 
             if (result)
             {
@@ -67,14 +67,14 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult> DeleteSubjects(int subjectId, int matterId)
+        public async Task<ActionResult> DeleteSubjects(int subjectId)
         {
-            if (matterId == 0 || subjectId == 0)
+            if (subjectId == 0)
             {
                 return BadRequest();
             }
 
-            var result = await _combosService.DeleteSubject(subjectId, matterId);
+            var result = await _combosService.DeleteSubject(subjectId);
 
             if (result)
             {
@@ -89,9 +89,9 @@ namespace Pro.Exam.Builder.Controllers
         /// </summary>
         [HttpGet("Matters")]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<IEnumerable<MatterDto>>> GetMatters()
+        public async Task<ActionResult<IEnumerable<MatterDto>>> GetMatters(int subjectId)
         {
-            var result = await _combosService.GetMatters();
+            var result = await _combosService.GetMatters(subjectId);
 
             return Ok(result);
         }
@@ -103,14 +103,14 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Matters")]
         [ProducesResponseType(201)]
         [ProducesResponseType(500)]
-        public async Task<StatusCodeResult> PostMatters(string matter)
+        public async Task<StatusCodeResult> PostMatters(string matter, int subjectId)
         {
-            if (matter == null)
+            if (subjectId == 0 || matter == null)
             {
                 return BadRequest();
             }
 
-            var result = await _combosService.PostMatter(matter);
+            var result = await _combosService.PostMatter(matter, subjectId);
 
             if (result)
             {
@@ -129,14 +129,14 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult> DeleteMatters(int matterId)
+        public async Task<ActionResult> DeleteMatters(int matterId, int subjectId)
         {
             if (matterId == 0)
             {
                 return BadRequest();
             }
 
-            var result = await _combosService.DeleteMatter(matterId);
+            var result = await _combosService.DeleteMatter(matterId, subjectId);
 
             if (result)
             {

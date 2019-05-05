@@ -6,11 +6,11 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
 {
     public interface ICombosRepository
     {
-        Task<IEnumerable<SubjectDto>> GetSubjects(int matterId);
-        Task<bool> PostSubject(string subject, int matterId);
-        Task<bool> DeleteSubject(int subjectId, int matterId);
-        Task<IEnumerable<MatterDto>> GetMatters();
-        Task<bool> PostMatter(string subject);
-        Task<bool> DeleteMatters(int matterId);
+        Task<IEnumerable<SubjectDto>> GetSubjects();
+        Task<bool> PostSubject(string subject);
+        Task<bool> DeleteSubject(int subjectId);
+        Task<IEnumerable<MatterDto>> GetMatters(int subjectId);
+        Task<bool> PostMatter(string subject, int subjectId);
+        Task<bool> DeleteMatters(int matterId, int subjectId);
     }
 }

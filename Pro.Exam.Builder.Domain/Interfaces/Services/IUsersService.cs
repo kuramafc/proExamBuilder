@@ -10,5 +10,6 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     {
         Task<bool> Register(UserDto user);
         Task<bool> Login(UserDto user);
+        Task<IEnumerable<UserDto>> GetUsers();
     }
 }

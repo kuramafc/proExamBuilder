@@ -1,8 +1,5 @@
 ﻿using Pro.Exam.Builder.Domain.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Pro.Exam.Builder.Domain.Dtos
 {
@@ -17,6 +14,8 @@ namespace Pro.Exam.Builder.Domain.Dtos
         [MaxLengthAttribute(45)]
         [EmailAddressAttribute()]
         public string Email { get; set; }
+        [Required]
+        public string Code { get; set; }
         [Required]
         public UserTypeEnum Type { get; set; }
     }

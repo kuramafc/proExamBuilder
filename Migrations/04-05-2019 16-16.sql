@@ -46,7 +46,7 @@ CREATE TABLE Questions (
 	Image varchar(40) NOT NULL,
 	Author varchar(40) NOT NULL,
 	HasOption BIT NOT NULL,
-	Semester INT NOT NULL,
+	Code BIGINT NOT NULL,
 	MatterId int,
 	SubjectId int,
 	FOREIGN KEY(MatterId) REFERENCES Matters(Id),
@@ -56,8 +56,7 @@ CREATE TABLE Questions (
 CREATE TABLE QuestionsOptions (
 	Id INT PRIMARY KEY IDENTITY(1,1),
 	Description varchar(40) NOT NULL,
-	QuestionId INT,
-	FOREIGN KEY(QuestionId) REFERENCES Questions(Id)
+	QuestionCode BIGINT
 )
 
 CREATE TABLE Historic (

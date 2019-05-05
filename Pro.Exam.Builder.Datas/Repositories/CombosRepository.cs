@@ -16,49 +16,49 @@ namespace Pro.Exam.Builder.Datas.Repositories
             _connection = connection;
         }
 
-        public async Task<bool> PostMatter(string matter)
+        public async Task<bool> PostMatter(string matter, int subjectId)
         {
-            var result = await _connection.Execute<string>(@"INSERT INTO Matters (Matter) VALUES (@matter)", new { matter });
+            await _connection.Execute<string>(@"INSERT INTO Matters (Matter) VALUES (@matter)", new { matter });
+            var resultId = await _connection.GetFirstOrDefault<int>("SELECT Id FROM Matters WHERE Matter = @matter", new { matter });
+            var result = await _connection.Execute<bool>(@"INSERT INTO MatSub (MatterId, SubjectId) VAlUES (@MatterId, @SubjectId)", new { MatterId = resultId, SubjectId = subjectId });
 
             return result != null;
         }
 
-        public async Task<IEnumerable<MatterDto>> GetMatters()
+        public async Task<IEnumerable<MatterDto>> GetMatters(int subjectId)
         {
-            var result = await _connection.Execute<MatterDto>("SELECT * FROM Matters");
+            var result = await _connection.Execute<MatterDto>(@"SELECT mt.id, mt.Subject FROM Matters AS mt
+                                                                    INNER JOIN MatSub AS ms ON Matter.Id = mt.id 
+                                                                    INNER JOIN Subjects AS sj ON sj.id = ms.Subject.Id
+                                                                        WHERE sj.id = @subjectId", new { subjectId });
 
             return result.ToList();
         }
 
-        public async Task<bool> DeleteMatters(int matterId)
-        {
-            var result = await _connection.Execute<bool>("DELETE Matters where Id = @matterId", new { matterId });
-
-            return result != null;
-        }
-
-        public async Task<bool> PostSubject(string subject, int matterId)
-        {
-            await _connection.Execute<string>(@"INSERT INTO Subjects (Subject) VALUES (@subject)", new { subject });
-            var resultId = await _connection.GetFirstOrDefault<int>("SELECT Id FROM Subjects WHERE Subject = @subject", new { subject });
-            var result = await _connection.Execute<bool>(@"INSERT INTO MatSub (MatterId, SubjectId) VAlUES (@MatterId, @SubjectId)", new { MatterId = matterId, SubjectId = resultId });
-
-            return result != null;
-        }
-
-        public async Task<IEnumerable<SubjectDto>> GetSubjects(int matterId)
-        {
-            var result = await _connection.Execute<SubjectDto>(@"SELECT sj.id, sj.Subject FROM Subjects AS sj
-                                                                    INNER JOIN MatSub AS ms ON SubjectId = sj.id 
-                                                                    INNER JOIN Matters AS mt ON mt.id = ms.MatterId
-                                                                        WHERE mt.id = @matterId", new { matterId });
-
-            return result.ToList();
-        }
-
-        public async Task<bool> DeleteSubject(int subjectId, int matterId)
+        public async Task<bool> DeleteMatters(int matterId, int subjectId)
         {
             var result = await _connection.Execute<bool>(@"DELETE MatSub where MatterId = @matterId AND SubjectId = @subjectId", new { subjectId, matterId });
+
+            return result != null;
+        }
+
+        public async Task<bool> PostSubject(string subject)
+        {
+            var result = await _connection.Execute<string>(@"INSERT INTO Subjects (Subject) VALUES (@subject)", new { subject });
+
+            return result != null;
+        }
+
+        public async Task<IEnumerable<SubjectDto>> GetSubjects()
+        {
+            var result = await _connection.Execute<SubjectDto>("SELECT * FROM Subjects");
+
+            return result.ToList();
+        }
+
+        public async Task<bool> DeleteSubject(int subjectId)
+        {
+            var result = await _connection.Execute<bool>("DELETE Subjects where Id = @subjectId", new { subjectId });
 
             return result != null;
         }

@@ -75,5 +75,18 @@ namespace Pro.Exam.Builder.Controllers
 
             return StatusCode(401);
         }
+
+        // GET api/v1/Users
+        /// <summary>
+        /// Returns a list of 'Disciplinas'.
+        /// </summary>
+        [HttpGet]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetSubjects()
+        {
+            var result = await _usersService.GetUsers();
+
+            return Ok(result);
+        }
     }
 }

@@ -1,14 +1,13 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Pro.Exam.Builder.Domain.Models;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Domain.Interfaces.Services
 {
     public interface IExamsService
     {
-        Task RegisterQuestions(QuestionsDto questions);
+        Task<bool> RegisterQuestion(Question question);
+        Task<bool> DeleteQuestion(long questionCode);
         Task<string> ExamGerenate(ExamDto exam);
     }
 }

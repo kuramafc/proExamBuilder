@@ -14,34 +14,34 @@ namespace Pro.Exam.Builder.Domain.Services
             _combosRepository = combosRepository;
         }
 
-        public Task<IEnumerable<MatterDto>> GetMatters()
+        public Task<IEnumerable<MatterDto>> GetMatters(int subjectId)
         {
-            return _combosRepository.GetMatters();
+            return _combosRepository.GetMatters(subjectId);
         }
 
-        public Task<bool> PostMatter(string matter)
+        public Task<bool> PostMatter(string matter, int subjectId)
         {
-            return _combosRepository.PostMatter(matter);
+            return _combosRepository.PostMatter(matter, subjectId);
         }
 
-        public Task<bool> DeleteMatter(int matterId)
+        public Task<bool> DeleteMatter(int matterId, int subjectId)
         {
-            return _combosRepository.DeleteMatters(matterId);
+            return _combosRepository.DeleteMatters(matterId, subjectId);
         }
 
-        public Task<bool> PostSubject(string subject, int matterId)
+        public Task<bool> PostSubject(string subject)
         {
-            return _combosRepository.PostSubject(subject, matterId);
+            return _combosRepository.PostSubject(subject);
         }
 
-        public Task<IEnumerable<SubjectDto>> GetSubjects(int matterId)
+        public Task<IEnumerable<SubjectDto>> GetSubjects()
         {
-            return _combosRepository.GetSubjects(matterId);
+            return _combosRepository.GetSubjects();
         }
 
-        public Task<bool> DeleteSubject(int subjectId, int matterId)
+        public Task<bool> DeleteSubject(int subjectId)
         {
-            return _combosRepository.DeleteSubject(subjectId, matterId);
+            return _combosRepository.DeleteSubject(subjectId);
         }
     }
 }

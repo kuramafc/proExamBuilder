@@ -1,7 +1,5 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Domain.Interfaces.Services
@@ -10,5 +8,6 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     {
         Task<bool> Register(UserDto user);
         Task<bool> Login(UserDto user);
+        Task<IEnumerable<UserDto>> GetUsers();
     }
 }

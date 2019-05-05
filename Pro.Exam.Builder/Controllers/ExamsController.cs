@@ -2,9 +2,7 @@
 using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Controllers
@@ -47,9 +45,21 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Questions")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public void RegisterQuestions([FromBody] QuestionsDto questions)
+        public async Task<StatusCodeResult> RegisterQuestions([FromBody] Question question)
         {
+            if (question == null)
+            {
+                return BadRequest();
+            }
 
+            var result = await _examsService.RegisterQuestion(question);
+
+            if (result)
+            {
+                return StatusCode(201);
+            }
+
+            return StatusCode(500);
         }
 
         // DELETE api/v1/Exams/Questions
@@ -64,9 +74,20 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public void DeleteQuestions(int questionId)
+        public async Task<ActionResult> DeleteQuestions(long questionCode)
         {
+            if (questionCode == 0)
+            {
+                return BadRequest();
+            }
 
+            var result = await _examsService.DeleteQuestion(questionCode);
+
+            if (result)
+            {
+                return Ok(questionCode + " Was deleted");
+            }
+            return StatusCode(500);
         }
 
         // POST api/v1/Exams/ExamGerenate

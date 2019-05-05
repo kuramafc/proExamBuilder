@@ -35,6 +35,7 @@ namespace Pro.Exam.Builder
             });
 
             services.AddInfrastructure(Configuration);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +60,14 @@ namespace Pro.Exam.Builder
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pro Exam Builder");
             });
+
+            app.UseCors(
+                options => options
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+            );
 
             app.UseHttpsRedirection();
             app.UseMvc();
