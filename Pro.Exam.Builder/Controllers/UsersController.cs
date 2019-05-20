@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
+using Pro.Exam.Builder.Domain.Models;
 
 namespace Pro.Exam.Builder.Controllers
 {
@@ -20,17 +21,6 @@ namespace Pro.Exam.Builder.Controllers
             _usersService = usersService;
         }
 
-        // GET api/v1/Users
-        /// <summary>
-        /// Test the Api.
-        /// </summary>
-        [HttpGet("Test")]
-        [ProducesResponseType(200)]
-        public ActionResult<string> Test()
-        {
-            return "Service working";
-        }
-
         // POST api/v1/Users/Register
         /// <summary>
         /// Register a new user.
@@ -41,7 +31,7 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Register")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<StatusCodeResult> Register([FromBody] UserDto user)
+        public async Task<StatusCodeResult> Register([FromBody] RegisterUserDto user)
         {
             var result = await _usersService.Register(user);
 
@@ -64,16 +54,16 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public async Task<StatusCodeResult> Login([FromBody] UserDto user)
+        public async Task<ActionResult<UserResponse>> Login([FromBody] UserDto user)
         {
             var result = await _usersService.Login(user);
 
-            if (result)
+            if (result != null)
             {
-                return StatusCode(201);
+                return Ok(result);
             }
 
-            return StatusCode(401);
+            return Forbid();
         }
 
         // GET api/v1/Users
@@ -82,11 +72,34 @@ namespace Pro.Exam.Builder.Controllers
         /// </summary>
         [HttpGet]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetSubjects()
+        public async Task<ActionResult<IEnumerable<UserResponse>>> GetUsers()
         {
             var result = await _usersService.GetUsers();
 
             return Ok(result);
+        }
+
+        // Delete api/v1/Users
+        /// <summary>
+        /// Returns a list of 'Disciplinas'.
+        /// </summary>
+        [HttpDelete]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult> DeleteUsers(string code)
+        {
+            if (code == null || code == "")
+            {
+                return BadRequest();
+            }
+
+            var result = await _usersService.DeleteUser(code);
+
+            if (result)
+            {
+                return Ok(code + " Was deleted");
+            }
+            return StatusCode(500);
         }
     }
 }

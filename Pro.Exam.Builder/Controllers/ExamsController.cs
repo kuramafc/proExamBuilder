@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Interfaces.Documents;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Models;
 using System.Collections.Generic;
@@ -30,9 +31,21 @@ namespace Pro.Exam.Builder.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public void GetQuestions([FromBody] ExamDto exam)
+        public async Task<ActionResult<QuestionsDto>> GetQuestions(string userEmail)
         {
+            if (userEmail == null)
+            {
+                return BadRequest();
+            }
 
+            var result = await _examsService.GetQuestions(userEmail);
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(500);
         }
 
         // POST api/v1/Exams/Questions
@@ -90,6 +103,28 @@ namespace Pro.Exam.Builder.Controllers
             return StatusCode(500);
         }
 
+        // POST api/v1/Exams/ExamGerenatePreview
+        /// <summary>
+        /// Generate exam.
+        /// </summary>
+        /// <param name="questions"></param>
+        /// <response code="201">Registered with success</response>
+        /// <response code="400">Bad request</response> 
+        [HttpPost("ExamGerenatePreview")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<QuestionsDto>> ExamGerenatePreview([FromBody] ExamDto exam)
+        {
+            var result = await _examsService.ExamGerenatePreview(exam);
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(500);
+        }
+
         // POST api/v1/Exams/ExamGerenate
         /// <summary>
         /// Generate exam.
@@ -98,11 +133,14 @@ namespace Pro.Exam.Builder.Controllers
         /// <response code="201">Registered with success</response>
         /// <response code="400">Bad request</response> 
         [HttpPost("ExamGenerate")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public ActionResult<ExamLinks> ExamGerenate([FromBody] ExamDto exam)
+        public async Task<ActionResult> ExamGerenate([FromBody] QuestionsDto question)
         {
-            return new ExamLinks() { DocX = "http://download.doc", PDF = "http://download.pdf" };
+            await _examsService.ExamGerenate(question);
+
+
+            return StatusCode(201);
         }
 
         // GET api/v1/Exams/Historic

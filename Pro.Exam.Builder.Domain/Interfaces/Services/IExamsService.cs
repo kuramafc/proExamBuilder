@@ -1,5 +1,6 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Domain.Interfaces.Services
@@ -8,6 +9,8 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     {
         Task<bool> RegisterQuestion(Question question);
         Task<bool> DeleteQuestion(long questionCode);
-        Task<string> ExamGerenate(ExamDto exam);
+        Task<string> ExamGerenate(QuestionsDto question);
+        Task<QuestionsDto> ExamGerenatePreview(ExamDto exam);
+        Task<IEnumerable<Question>> GetQuestions(string userEmail);
     }
 }

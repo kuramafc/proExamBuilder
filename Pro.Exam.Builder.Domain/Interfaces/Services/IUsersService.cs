@@ -1,4 +1,5 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,8 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     public interface IUsersService
     {
         Task<bool> Register(UserDto user);
-        Task<bool> Login(UserDto user);
-        Task<IEnumerable<UserDto>> GetUsers();
+        Task<UserResponse> Login(UserDto user);
+        Task<IEnumerable<UserResponse>> GetUsers();
+        Task<bool> DeleteUser(string code);
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Enums;
 using Pro.Exam.Builder.Domain.Interfaces;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Models;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Datas.Repositories
@@ -29,9 +30,24 @@ namespace Pro.Exam.Builder.Datas.Repositories
             return result != null;
         }
 
-        public Task<string> ExamGerenate(ExamDto exam)
+        public Task<string> ExamGerenate(QuestionsDto question)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Question>> GetQuestions(string userEmail)
+        {
+            return await _connection.Execute<Question>(@"SELECT * FROM Questions WHERE Author");
+        }
+
+        public async Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type)
+        {
+            if (type == ExamTypeEnum.N2)
+            {
+                return  await _connection.GetFirstOrDefault<Question>(@"SELECT * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0", param);
+            } 
+
+            return await _connection.GetFirstOrDefault<Question>(@"SELECT * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult", param);
         }
 
         public async Task<bool> RegisterQuestion(Question question)
@@ -39,8 +55,8 @@ namespace Pro.Exam.Builder.Datas.Repositories
             var code = (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
             question.Code = code;
 
-            var result = await _connection.Execute<Question>(@"INSERT INTO Questions (Difficult, RightQuestion, Used, Image, Author, HasOption, MatterId, SubjectId, Code)
-                                                                VALUES (@Difficult, @RightQuestion, @Used, @Image, @Author, @HasOption, @MatterId, @SubjectId, @Code)", question);
+            var result = await _connection.Execute<Question>(@"INSERT INTO Questions (QuestionName, Difficult, RightQuestion, Used, Image, Author, HasOption, MatterId, SubjectId, Code)
+                                                                VALUES (@QuestionName, @Difficult, @RightQuestion, @Used, @Image, @Author, @HasOption, @MatterId, @SubjectId, @Code)", question);
 
             if (result != null)
             {

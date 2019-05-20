@@ -2,7 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pro.Exam.Builder.Datas;
 using Pro.Exam.Builder.Datas.Repositories;
+using Pro.Exam.Builder.Domain;
 using Pro.Exam.Builder.Domain.Interfaces;
+using Pro.Exam.Builder.Domain.Interfaces.Documents;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Services;
 using System;
@@ -25,6 +27,7 @@ namespace Pro.Exam.Builder.Ioc
             services.AddScoped<ICombosService, CombosService>();
             services.AddScoped<IExamsService, ExamsService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IDocumentDocX, DocumentDocX>();
 
             return services;
         }

@@ -10,10 +10,11 @@ namespace Pro.Exam.Builder.Domain.Models
     {
         [Required]
         public Difficult Difficult { get; set; }
-        public int Semester { get; set; }
         [Required]
         public string Matter { get; set; }
         [Required]
         public string Subject { get; set; }
+        [Required]
+        public bool HasOptions { get; set; }
     }
 }

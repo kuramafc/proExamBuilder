@@ -9,6 +9,6 @@ namespace Pro.Exam.Builder.Domain.Dtos
     public class ExamDto
     {
         public List<QuestionParams> QuestionParams { get; set; }
-        public ExamTypeEnum Type { get; set; }
+        public ExamTypeEnum ExamType { get; set; }
     }
 }

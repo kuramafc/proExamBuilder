@@ -1,5 +1,6 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
+using Pro.Exam.Builder.Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace Pro.Exam.Builder.Domain.Services
             _usersRepository = usersRepository;
         }
 
-        public Task<bool> Login(UserDto user)
+        public Task<UserResponse> Login(UserDto user)
         {
             return _usersRepository.Login(user);
         }
@@ -24,9 +25,14 @@ namespace Pro.Exam.Builder.Domain.Services
             return _usersRepository.Register(user);
         }
 
-        public Task<IEnumerable<UserDto>> GetUsers()
+        public Task<IEnumerable<UserResponse>> GetUsers()
         {
             return _usersRepository.GetUsers();
+        }
+
+        public Task<bool> DeleteUser(string code)
+        {
+            return _usersRepository.DeleteUser(code);
         }
     }
 }

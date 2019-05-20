@@ -1,6 +1,7 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
+using Pro.Exam.Builder.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +16,11 @@ namespace Pro.Exam.Builder.Datas.Repositories
         {
             _connection = connection;
         }
-        public async Task<bool> Login(UserDto user)
+        public async Task<UserResponse> Login(UserDto user)
         {
-            var result = await _connection.GetFirstOrDefault<UserDto>("SELECT * FROM users WHERE Email = @Email AND Password =  @Password AND Type = @Type", user);
+            var result = await _connection.GetFirstOrDefault<UserResponse>("SELECT * FROM users WHERE Email = @Email AND Password =  @Password", user);
 
-            return result != null;
+            return result;
         }
 
         public async Task<bool> Register(UserDto user)
@@ -29,11 +30,18 @@ namespace Pro.Exam.Builder.Datas.Repositories
             return result != null;
         }
 
-        public async Task<IEnumerable<UserDto>> GetUsers()
+        public async Task<IEnumerable<UserResponse>> GetUsers()
         {
-            var result = await _connection.Execute<UserDto>("SELECT * FROM Users");
+            var result = await _connection.Execute<UserResponse>("SELECT * FROM Users");
 
             return result.ToList();
+        }
+
+        public async Task<bool> DeleteUser(string code)
+        {
+            var result = await _connection.Execute<bool>("DELETE Users WHERE Code = @Code)", code);
+
+            return result != null;
         }
     }
 }
