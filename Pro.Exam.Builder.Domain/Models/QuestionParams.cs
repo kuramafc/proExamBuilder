@@ -11,9 +11,9 @@ namespace Pro.Exam.Builder.Domain.Models
         [Required]
         public Difficult Difficult { get; set; }
         [Required]
-        public string Matter { get; set; }
+        public string MatterId { get; set; }
         [Required]
-        public string Subject { get; set; }
+        public string SubjectId { get; set; }
         [Required]
         public bool HasOptions { get; set; }
     }

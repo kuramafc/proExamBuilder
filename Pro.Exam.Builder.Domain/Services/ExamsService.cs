@@ -38,7 +38,7 @@ namespace Pro.Exam.Builder.Domain.Services
         public async Task<QuestionsDto> ExamGerenatePreview(ExamDto exam)
         {
            var size = exam.QuestionParams.Count;
-            QuestionsDto questionsResult = new QuestionsDto() { ExamType = exam.ExamType };
+            QuestionsDto questionsResult = new QuestionsDto() { ExamType = exam.ExamType, Questions = new List<Question>() };
 
             if (size > 0)
             {

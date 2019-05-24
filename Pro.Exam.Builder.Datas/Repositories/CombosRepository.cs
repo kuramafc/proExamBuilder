@@ -27,10 +27,10 @@ namespace Pro.Exam.Builder.Datas.Repositories
 
         public async Task<IEnumerable<MatterDto>> GetMatters(int subjectId)
         {
-            var result = await _connection.Execute<MatterDto>(@"SELECT mt.id, mt.Subject FROM Matters AS mt
-                                                                    INNER JOIN MatSub AS ms ON Matter.Id = mt.id 
-                                                                    INNER JOIN Subjects AS sj ON sj.id = ms.Subject.Id
-                                                                        WHERE sj.id = @subjectId", new { subjectId });
+            var result = await _connection.Execute<MatterDto>(@"SELECT mt.id, mt.Matter FROM Matters AS mt
+                                                                   INNER JOIN MatSub AS ms ON ms.Id = mt.id 
+                                                                   INNER JOIN Subjects AS sj ON sj.id = ms.Id
+                                                                   WHERE sj.id = @subjectId", new { subjectId });
 
             return result.ToList();
         }

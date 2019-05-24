@@ -37,21 +37,21 @@ namespace Pro.Exam.Builder.Domain
                     run.FontSize = 12;
                     run.SetText(i + 1 + " - " + question.Questions[i].QuestionName);
 
-                    if (!string.IsNullOrEmpty(question.Questions[i].Image.Trim()) && File.Exists(@"C:/Documents/aa.JPG"))
+                    if (!string.IsNullOrEmpty(question.Questions[i].Image.Trim()) && File.Exists(@"C:/Users/ctiadmin/Downloads/aa.PNG"))
                     {
 
                     var widthEmus = (int)(400.0 * 9525);
                     var heightEmus = (int)(300.0 * 9525);
 
-                    using (FileStream picData = new FileStream("C:/Documents/aa.JPG", FileMode.Open, FileAccess.Read))
+                    using (FileStream picData = new FileStream("C:/Users/ctiadmin/Downloads/aa.PNG", FileMode.Open, FileAccess.Read))
                     {
                         var image = doc.CreateParagraph();
                         XWPFRun imageRun = image.CreateRun();
-                        imageRun.AddPicture(picData, (int)PictureType.PNG, "aa.JPG", widthEmus, heightEmus);
+                        imageRun.AddPicture(picData, (int)PictureType.PNG, "aa.PNG", widthEmus, heightEmus);
                     }
                 }
 
-                if (question.Questions[i].HasOption)
+                if (question.Questions[i].HasOption && question.Questions[i].Options != null)
                     {
                         for (var j = 0; j < question.Questions[i].Options.Count; j++)
                         {
