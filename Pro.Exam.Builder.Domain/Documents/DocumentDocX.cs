@@ -1,6 +1,7 @@
 ﻿using NPOI.XWPF.UserModel;
 using Pro.Exam.Builder.Domain.Dtos;
 using Pro.Exam.Builder.Domain.Interfaces.Documents;
+using Pro.Exam.Builder.Domain.Models;
 using System;
 using System.IO;
 
@@ -19,7 +20,7 @@ namespace Pro.Exam.Builder.Domain
             }
         }
 
-        public void CreateDocument(QuestionsDto question)
+        public ExamLinks CreateDocument(QuestionsDto question)
         {
             var code = (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds;
             char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -37,17 +38,19 @@ namespace Pro.Exam.Builder.Domain
                     run.FontSize = 12;
                     run.SetText(i + 1 + " - " + question.Questions[i].QuestionName);
 
-                    if (!string.IsNullOrEmpty(question.Questions[i].Image.Trim()) && File.Exists(@"C:/Users/ctiadmin/Downloads/aa.PNG"))
+                var imagePath = new string[] { @"", question.Questions[i].Image };
+                var fullImagePath = Path.Combine(imagePath);
+                    if (!string.IsNullOrEmpty(question.Questions[i].Image.Trim()) && File.Exists(fullImagePath))
                     {
 
                     var widthEmus = (int)(400.0 * 9525);
                     var heightEmus = (int)(300.0 * 9525);
 
-                    using (FileStream picData = new FileStream("C:/Users/ctiadmin/Downloads/aa.PNG", FileMode.Open, FileAccess.Read))
+                    using (FileStream picData = new FileStream(fullImagePath, FileMode.Open, FileAccess.Read))
                     {
                         var image = doc.CreateParagraph();
                         XWPFRun imageRun = image.CreateRun();
-                        imageRun.AddPicture(picData, (int)PictureType.PNG, "aa.PNG", widthEmus, heightEmus);
+                        imageRun.AddPicture(picData, (int)PictureType.PNG, "image.PNG", widthEmus, heightEmus);
                     }
                 }
 
@@ -78,10 +81,19 @@ namespace Pro.Exam.Builder.Domain
                     rigthQuestionRun.SetText("Resposta: " + question.Questions[i].RightQuestion);
                 }
 
-            using (var fs = new FileStream(directory + newFile, FileMode.Create, FileAccess.Write))
+            var directoryFile = directory + newFile;
+            using (var fs = new FileStream(directoryFile, FileMode.Create, FileAccess.Write))
             {
                 doc.Write(fs);
             }
+
+            var examLinks = new ExamLinks()
+            {
+                DocX = directoryFile,
+                Exam = code,
+            };
+
+            return examLinks;
         }
     }
 }

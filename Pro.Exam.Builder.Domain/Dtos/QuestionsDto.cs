@@ -10,5 +10,6 @@ namespace Pro.Exam.Builder.Domain.Dtos
     {
         public List<Question> Questions { get; set; }
         public ExamTypeEnum ExamType { get; set; }
+        public string UserCode { get; set; }
     }
 }

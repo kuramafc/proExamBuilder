@@ -135,12 +135,16 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("ExamGenerate")]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult> ExamGerenate([FromBody] QuestionsDto question)
+        public async Task<ActionResult<ExamLinks>> ExamGerenate([FromBody] QuestionsDto question)
         {
-            await _examsService.ExamGerenate(question);
+            var result = await _examsService.ExamGerenate(question);
 
+            if (result != null)
+            {
+                return Ok(result);
+            }
 
-            return StatusCode(201);
+            return StatusCode(500);
         }
 
         // GET api/v1/Exams/Historic
@@ -153,14 +157,16 @@ namespace Pro.Exam.Builder.Controllers
         [HttpPost("Historic")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public ActionResult<IEnumerable<ExamLinks>> ExamGerenate(string matter, string subject)
+        public async Task<ActionResult<IEnumerable<ExamLinks>>> Historic(long userCode = 0)
         {
-            List<ExamLinks> examLinks = new List<ExamLinks>
-            {
-                new ExamLinks() { DocX = "http://download.doc", PDF = "http://download.pdf" }
-            };
+            var result = await _examsService.Historic(userCode);
 
-            return examLinks;
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(500);
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
     {
         Task<bool> RegisterQuestion(Question question);
         Task<bool> DeleteQuestion(long questionCode);
-        Task<string> ExamGerenate(QuestionsDto question);
+        Task<ExamLinks> ExamGerenate(QuestionsDto question);
         Task<QuestionsDto> ExamGerenatePreview(ExamDto exam);
         Task<IEnumerable<Question>> GetQuestions(string userEmail);
+        Task<IEnumerable<ExamLinks>> Historic(long userCode);
     }
 }

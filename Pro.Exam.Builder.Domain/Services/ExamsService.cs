@@ -1,4 +1,5 @@
 ﻿using Pro.Exam.Builder.Domain.Dtos;
+using Pro.Exam.Builder.Domain.Enums;
 using Pro.Exam.Builder.Domain.Interfaces.Documents;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Models;
@@ -18,11 +19,23 @@ namespace Pro.Exam.Builder.Domain.Services
             _documentDocX = documentDocX;
         }
 
-        public Task<string> ExamGerenate(QuestionsDto question)
+        public async Task<ExamLinks> ExamGerenate(QuestionsDto question)
         {
-            _documentDocX.CreateDocument(question);
+           var result = _documentDocX.CreateDocument(question);
 
-            return _examsRepository.ExamGerenate(question);
+            result.Author = question.UserCode;
+
+            if (question.ExamType == ExamTypeEnum.N2)
+            {
+                foreach(var q in question.Questions)
+                {
+                    await _examsRepository.DesableQuestion(q.Code);
+                }
+            }
+
+            await _examsRepository.ExamGerenate(result);
+
+            return result;
         }
 
         public Task<bool> DeleteQuestion(long questionCode)
@@ -59,6 +72,11 @@ namespace Pro.Exam.Builder.Domain.Services
         public async Task<IEnumerable<Question>> GetQuestions(string userEmail)
         {
             return await _examsRepository.GetQuestions(userEmail);
+        }
+
+        public async Task<IEnumerable<ExamLinks>> Historic(long userCode)
+        {
+            return await _examsRepository.Historic(userCode);
         }
     }
 }

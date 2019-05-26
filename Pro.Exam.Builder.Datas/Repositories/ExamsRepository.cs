@@ -30,9 +30,19 @@ namespace Pro.Exam.Builder.Datas.Repositories
             return result != null;
         }
 
-        public Task<string> ExamGerenate(QuestionsDto question)
+        public async Task<bool> DesableQuestion(long code)
         {
-            throw new NotImplementedException();
+            var result = await _connection.Execute<bool>("UPDATE Questions SET Used = 1 WHERE Code = @Code", new { Code = code });
+
+            return result != null;
+        }
+
+        public async Task<bool> ExamGerenate(ExamLinks examLinks)
+        {
+            var result = await _connection.Execute<bool>(@"INSERT INTO Historic (Exam, DOCX, Author)
+                                                                VALUES (@Exam, @DOCX, @Author)", examLinks);
+
+            return result != null;
         }
 
         public async Task<IEnumerable<Question>> GetQuestions(string userEmail)
@@ -40,14 +50,23 @@ namespace Pro.Exam.Builder.Datas.Repositories
             return await _connection.Execute<Question>(@"SELECT * FROM Questions WHERE Author");
         }
 
+        public async Task<IEnumerable<ExamLinks>> Historic(long userCode)
+        {
+            if (userCode == 0)
+            {
+                return await _connection.Execute<ExamLinks>(@"SELECT * FROM Historic");
+            }
+            return await _connection.Execute<ExamLinks>(@"SELECT * FROM Historic WHERE Author = @UserCode", new { UserCode = userCode });
+        }
+
         public async Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type)
         {
             if (type == ExamTypeEnum.N2)
             {
-                return  await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0", param);
-            } 
+                return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0 ORDER BY RANDOM() LIMIT 1", param);
+            }
 
-            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult", param);
+            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult ORDER BY RANDOM() LIMIT 1", param);
         }
 
         public async Task<bool> RegisterQuestion(Question question)
@@ -60,7 +79,7 @@ namespace Pro.Exam.Builder.Datas.Repositories
 
             if (result != null)
             {
-                foreach(string x in question.Options)
+                foreach (string x in question.Options)
                 {
                     result = await _connection.Execute<Question>(@"INSERT INTO QuestionsOptions (Description, QuestionCode) VALUES (@Description, @QuestionCode)", new { QuestionCode = code, Description = x });
                 }
