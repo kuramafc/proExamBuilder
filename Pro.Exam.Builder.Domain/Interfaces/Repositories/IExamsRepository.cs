@@ -16,5 +16,6 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
         Task<IEnumerable<Question>> GetQuestions(string UserEmail);
         Task<bool> DesableQuestion(long code);
         Task<IEnumerable<ExamLinks>> Historic(long userCode);
+        Task<IEnumerable<string>> QuestionPreviewOptions(long questionId);
     }
 }

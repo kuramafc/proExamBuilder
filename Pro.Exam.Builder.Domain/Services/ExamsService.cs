@@ -4,6 +4,7 @@ using Pro.Exam.Builder.Domain.Interfaces.Documents;
 using Pro.Exam.Builder.Domain.Interfaces.Services;
 using Pro.Exam.Builder.Domain.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pro.Exam.Builder.Domain.Services
@@ -61,6 +62,12 @@ namespace Pro.Exam.Builder.Domain.Services
 
                     if (result != null)
                     {
+                        if (result.HasOption)
+                        {
+                           var optionsResult = await _examsRepository.QuestionPreviewOptions(result.Code);
+
+                            result.Options = optionsResult.ToList();
+                        }
                         questionsResult.Questions.Add(result);
                     }
                 }

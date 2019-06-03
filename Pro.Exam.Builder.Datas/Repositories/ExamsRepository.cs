@@ -63,10 +63,15 @@ namespace Pro.Exam.Builder.Datas.Repositories
         {
             if (type == ExamTypeEnum.N2)
             {
-                return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0 ORDER BY RANDOM() LIMIT 1", param);
+                return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0 ORDER BY NEWID()", param);
             }
 
-            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult ORDER BY RANDOM() LIMIT 1", param);
+            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult ORDER BY NEWID()", param);
+        }
+
+        public async Task<IEnumerable<string>> QuestionPreviewOptions(long questionId)
+        {
+            return await _connection.Execute<string>(@"SELECT Description FROM QuestionsOptions WHERE QuestionCode = @QuestionId", new { QuestionId = questionId });
         }
 
         public async Task<bool> RegisterQuestion(Question question)

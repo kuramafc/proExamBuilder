@@ -40,6 +40,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Questions (
 	Id INT PRIMARY KEY IDENTITY(1,1),
+	QuestionName varchar(1000) NOT NULL,
 	Difficult INT NOT NULL,
 	RightQuestion varchar(40) NOT NULL,
 	Used BIT,
@@ -64,6 +65,6 @@ CREATE TABLE Historic (
 	Exam BIGINT NOT NULL,
 	PDF varchar(40),
 	DOCX varchar(40),
-	Author varcahr(10)
+	Author varchar(10)
 )
 
