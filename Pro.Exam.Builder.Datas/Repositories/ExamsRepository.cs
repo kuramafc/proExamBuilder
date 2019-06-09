@@ -59,14 +59,17 @@ namespace Pro.Exam.Builder.Datas.Repositories
             return await _connection.Execute<ExamLinks>(@"SELECT * FROM Historic WHERE Author = @UserCode", new { UserCode = userCode });
         }
 
-        public async Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type)
+        public async Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type, long[] array)
         {
+
+            var queryParam = new { param.Difficult, param.HasOptions, param.MatterId, param.SubjectId, Array = array };
             if (type == ExamTypeEnum.N2)
             {
-                return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0 ORDER BY NEWID()", param);
+                return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Used = 0 and Code not in @Array ORDER BY NEWID()", queryParam);
+
             }
 
-            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult ORDER BY NEWID()", param);
+            return await _connection.GetFirstOrDefault<Question>(@"SELECT top 1 * FROM Questions WHERE MatterId = @MatterId and SubjectId = @SubjectId and HasOption = HasOption and Difficult = @Difficult and Code not in @Array ORDER BY NEWID()", queryParam);
         }
 
         public async Task<IEnumerable<string>> QuestionPreviewOptions(long questionId)

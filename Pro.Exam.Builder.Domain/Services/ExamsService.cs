@@ -52,16 +52,18 @@ namespace Pro.Exam.Builder.Domain.Services
         public async Task<QuestionsDto> ExamGerenatePreview(ExamDto exam)
         {
            var size = exam.QuestionParams.Count;
+            var questionsUsed = new List<long>();
             QuestionsDto questionsResult = new QuestionsDto() { ExamType = exam.ExamType, Questions = new List<Question>() };
 
             if (size > 0)
             {
                 foreach(var question in exam.QuestionParams)
                 {
-                   var result = await _examsRepository.QuestionPreview(question, exam.ExamType);
+                   var result = await _examsRepository.QuestionPreview(question, exam.ExamType, questionsUsed.ToArray());
 
                     if (result != null)
                     {
+                        questionsUsed.Add(result.Code);
                         if (result.HasOption)
                         {
                            var optionsResult = await _examsRepository.QuestionPreviewOptions(result.Code);

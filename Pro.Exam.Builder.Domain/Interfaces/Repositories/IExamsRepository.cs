@@ -12,7 +12,7 @@ namespace Pro.Exam.Builder.Domain.Interfaces.Services
         Task<bool> RegisterQuestion(Question question);
         Task<bool> DeleteQuestion(long questionCode);
         Task<bool> ExamGerenate(ExamLinks examLinks);
-        Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type);
+        Task<Question> QuestionPreview(QuestionParams param, ExamTypeEnum type, long[] array);
         Task<IEnumerable<Question>> GetQuestions(string UserEmail);
         Task<bool> DesableQuestion(long code);
         Task<IEnumerable<ExamLinks>> Historic(long userCode);
